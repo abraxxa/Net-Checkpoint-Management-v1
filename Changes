@@ -4,6 +4,8 @@ Revision history for Net-Checkpoint-Management-v1: {{ $dist->version }}
     - fix Role::ObjectMethods abstract and list_$object documentation
     - fix skipping of api.t when environment variables aren't set
     - use Carp::Clan for better error reporting
+    - improve error reporting by falling back to the message if no error message
+      is returned
     - add discard method
     - discard changes in api.t
       to not cause locks on the management server used for testing
