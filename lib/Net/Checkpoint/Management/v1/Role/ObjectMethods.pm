@@ -1,6 +1,6 @@
 package Net::Checkpoint::Management::v1::Role::ObjectMethods;
 
-# ABSTRACT: Role for Cisco Firepower Management Center (FMC) API version 1 method generation
+# ABSTRACT: Role for Checkpoint Management API version 1.x method generation
 
 use 5.024;
 use feature 'signatures';
@@ -64,12 +64,12 @@ Throws an exception on error.
 
 Takes optional query parameters.
 
-Returns a hashref with a single key 'items' that has a list of hashrefs
-similar to the FMC API.
+Returns a hashref similar to the Checkpoint Management API but without the
+'from' and 'to' keys.
 
 Throws an exception on error.
 
-As the API only allows fetching 1000 objects at a time it works around that by
+As the API only allows fetching 500 objects at a time it works around that by
 making multiple API calls.
 
 =cut
