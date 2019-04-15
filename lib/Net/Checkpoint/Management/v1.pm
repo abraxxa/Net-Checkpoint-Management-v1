@@ -313,4 +313,22 @@ sub publish($self) {
     return $data->{'task-id'};
 }
 
+=method discard
+
+Discards all previously submitted changes.
+Returns a hashref containing the operation status messange and the number of
+discarded changes.
+
+=cut
+
+sub discard($self) {
+    my $res = $self->post('/web_api/v' . $self->api_version . '/discard', {});
+    my $code = $res->code;
+    my $data = $res->data;
+    croak($data->{message})
+        unless $code == 200;
+
+    return $data;
+}
+
 1;
