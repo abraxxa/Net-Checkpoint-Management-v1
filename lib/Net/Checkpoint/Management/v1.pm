@@ -6,7 +6,7 @@ use 5.024;
 use Moo;
 use feature 'signatures';
 use Types::Standard qw( ArrayRef Str );
-use Carp qw( croak );
+use Carp::Clan qw(^Net::Checkpoint::Management::v1);
 use Clone qw( clone );
 use Net::Checkpoint::Management::v1::Role::ObjectMethods;
 use Data::Dumper::Concise;

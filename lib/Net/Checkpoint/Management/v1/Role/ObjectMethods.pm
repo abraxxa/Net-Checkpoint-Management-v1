@@ -5,7 +5,7 @@ package Net::Checkpoint::Management::v1::Role::ObjectMethods;
 use 5.024;
 use feature 'signatures';
 use MooX::Role::Parameterized;
-use Carp qw( croak );
+use Carp::Clan qw(^Net::Checkpoint::Management::v1);
 use Clone qw( clone );
 use Moo::Role; # last for cleanup
 
