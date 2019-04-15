@@ -161,6 +161,11 @@ is($access_rule->{uid}, $ipv4_object_rule->{uid},
 
 # ok(my $taskid = $cpmgmt->publish, 'publish successful');
 
-$cpmgmt->logout;
+END {
+    if (defined $cpmgmt) {
+        $cpmgmt->discard;
+        $cpmgmt->logout;
+    }
+}
 
 done_testing;

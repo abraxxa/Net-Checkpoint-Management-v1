@@ -5,6 +5,8 @@ Revision history for Net-Checkpoint-Management-v1: {{ $dist->version }}
     - fix skipping of api.t when environment variables aren't set
     - use Carp::Clan for better error reporting
     - add discard method
+    - discard changes in api.t
+      to not cause locks on the management server used for testing
 
 0.001001  2019-04-12 13:44:14+02:00 Europe/Vienna
     - Initial release using the JSON REST API version 1
