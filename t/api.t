@@ -5,11 +5,11 @@ use JSON qw();
 use Data::Dumper::Concise;
 
 SKIP: {
-    skip "environment variables not set"
-        unless exists $ENV{NET_CHECKPOINT_MANAGEMENT_V1_HOSTNAME}
+    skip_all "environment variables not set"
+        unless (exists $ENV{NET_CHECKPOINT_MANAGEMENT_V1_HOSTNAME}
             && exists $ENV{NET_CHECKPOINT_MANAGEMENT_V1_USERNAME}
             && exists $ENV{NET_CHECKPOINT_MANAGEMENT_V1_PASSWORD}
-            && exists $ENV{NET_CHECKPOINT_MANAGEMENT_V1_POLICY};
+            && exists $ENV{NET_CHECKPOINT_MANAGEMENT_V1_POLICY});
 };
 
 my $cpmgmt = Net::Checkpoint::Management::v1->new(
