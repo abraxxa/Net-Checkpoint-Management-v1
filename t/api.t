@@ -1,5 +1,5 @@
 use Test2::V0;
-use Test2::Tools::Compare qw( array hash );
+use Test2::Tools::Compare qw( array hash F );
 use Net::Checkpoint::Management::v1;
 use JSON qw();
 use Data::Dumper::Concise;
@@ -158,6 +158,15 @@ ok(lives {
 }, "find access rule by name successful") or note($@);
 is($access_rule->{uid}, $ipv4_object_rule->{uid},
     'find access rule by name returns correct rule');
+
+is($access_rule->{enabled}, T(), "access rule is enabled");
+ok($access_rule = $cpmgmt->update_accessrule({
+        uid     => $access_rule->{uid},
+        layer   => $acl_uid,
+    }, {
+        enabled => JSON->boolean(0),
+    }), "disable access rule successful");
+is($access_rule->{enabled}, F(), "access rule is disabled");
 
 # ok(my $taskid = $cpmgmt->publish, 'publish successful');
 
