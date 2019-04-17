@@ -60,7 +60,6 @@ has 'api_versions' => (
 
 sub _build_api_versions ($self) {
     my $res_versions = $self->post('/web_api/v1.1/show-api-versions', {});
-    say $res_versions->code;
     return $res_versions->data->{'supported-versions'};
 }
 
