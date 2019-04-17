@@ -46,7 +46,7 @@ requires qw( _create _list _get _update _delete );
 
 =head1 DESCRIPTION
 
-This role adds methods for the REST methods of a specific object.
+This role adds methods for the commands of a specific object.
 
 =cut
 

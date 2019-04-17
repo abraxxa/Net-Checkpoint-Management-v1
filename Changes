@@ -12,4 +12,4 @@ Revision history for Net-Checkpoint-Management-v1: {{ $dist->version }}
     - add test for update_accessrule
 
 0.001001  2019-04-12 13:44:14+02:00 Europe/Vienna
-    - Initial release using the JSON REST API version 1
+    - Initial release using the JSON API version 1
