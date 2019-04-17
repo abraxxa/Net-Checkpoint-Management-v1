@@ -96,7 +96,8 @@ Throws an exception on error.
 
 =method delete_$singular
 
-Takes an object id.
+Takes a hashref of attributes uniquely identifying the object.
+For most objects the uid is sufficient, accessrule requires the layer uid too.
 
 Returns true on success.
 
@@ -155,14 +156,12 @@ role {
         ), $object, $object_data);
     });
 
-    $mop->method('delete_' . $params->{singular} => sub ($self, $id) {
+    $mop->method('delete_' . $params->{singular} => sub ($self, $object) {
         return $self->_delete(join('/',
             '/web_api',
             'v' . $self->api_version,
             $params->{delete}
-        ), {
-            uid => $id,
-        });
+        ), $object);
     });
 
     $mop->method('find_' . $params->{singular} => sub ($self, $search_params = {}, $query_params = {}) {

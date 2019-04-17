@@ -168,6 +168,11 @@ ok($access_rule = $cpmgmt->update_accessrule({
     }), "disable access rule successful");
 is($access_rule->{enabled}, F(), "access rule is disabled");
 
+ok($cpmgmt->delete_accessrule({
+        uid     => $access_rule->{uid},
+        layer   => $acl_uid,
+    }), "delete access rule successful");
+
 # ok(my $taskid = $cpmgmt->publish, 'publish successful');
 
 END {
