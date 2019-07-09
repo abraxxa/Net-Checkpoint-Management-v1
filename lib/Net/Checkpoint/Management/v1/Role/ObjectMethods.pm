@@ -139,7 +139,7 @@ role {
         ), $params->{list_key}, $query_params);
     });
 
-    $mop->method('get_' . $params->{singular} => sub ($self, $id, $query_params = {}) {
+    $mop->method('get_' . $params->{singular} => sub ($self, $query_params = {}) {
         return $self->_get(join('/',
             '/web_api',
             'v' . $self->api_version,

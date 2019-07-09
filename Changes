@@ -1,6 +1,8 @@
 Revision history for Net-Checkpoint-Management-v1: {{ $dist->version }}
 
 {{ $NEXT }}
+    - fix get methods required an unnecessary id
+      has to be specified as uid in the parameters for most objects
     - add service_groups methods
 
 0.001002  2019-04-23 11:06:31+02:00 Europe/Vienna
