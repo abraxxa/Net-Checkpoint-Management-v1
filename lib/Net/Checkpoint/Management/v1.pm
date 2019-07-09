@@ -266,6 +266,16 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         delete   => 'delete-service-other',
         list_key => 'objects',
     },
+    {
+        object   => 'service_groups',
+        singular => 'service_group',
+        create   => 'add-service-group',
+        list     => 'show-service-groups',
+        get      => 'show-service-group',
+        update   => 'set-service-group',
+        delete   => 'delete-service-group',
+        list_key => 'objects',
+    },
 ]);
 
 =method login
