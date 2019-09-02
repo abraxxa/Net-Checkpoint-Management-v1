@@ -217,6 +217,16 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         list_key => 'objects',
     },
     {
+        object   => 'access_roles',
+        singular => 'access_role',
+        create   => 'add-access-role',
+        list     => 'show-access-roles',
+        get      => 'show-access-role',
+        update   => 'set-access-role',
+        delete   => 'delete-access-role',
+        list_key => 'objects',
+    },
+    {
         object   => 'services_tcp',
         singular => 'service_tcp',
         create   => 'add-service-tcp',
