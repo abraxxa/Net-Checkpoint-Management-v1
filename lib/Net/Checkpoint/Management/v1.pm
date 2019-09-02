@@ -78,7 +78,10 @@ has 'api_version' => (
 with 'Net::Checkpoint::Management::v1::Role::REST::Client';
 
 sub _error_handler ($self, $data) {
-    my $error_message = (exists $data->{errors} && exists $data->{errors}->[0]
+    my $error_message = (
+        exists $data->{errors}
+        && ref $data->{errors} eq 'ARRAY'
+        && exists $data->{errors}->[0]
         && exists $data->{errors}->[0]->{message})
         ? $data->{errors}->[0]->{message}
         : $data->{message};
