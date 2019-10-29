@@ -79,6 +79,7 @@ ok(my $acme_net_clients = $cpmgmt->create_network({
     name    => 'acme_net-clients',
     subnet4 => '10.0.0.0',
     'mask-length4'  => 24,
+    'ignore-warnings' => 1,
 }), "create network 'acme_net-clients' successful");
 
 ok(my $tcp_services = $cpmgmt->list_services_tcp(),
