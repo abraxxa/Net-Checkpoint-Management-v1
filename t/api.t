@@ -2,7 +2,6 @@ use Test2::V0;
 use Test2::Tools::Compare qw( array hash F );
 use Net::Checkpoint::Management::v1;
 use JSON qw();
-use Data::Dumper::Concise;
 
 SKIP: {
     skip_all "environment variables not set"

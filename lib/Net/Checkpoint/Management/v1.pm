@@ -9,7 +9,6 @@ use Types::Standard qw( ArrayRef Str );
 use Carp::Clan qw(^Net::Checkpoint::Management::v1);
 use Clone qw( clone );
 use Net::Checkpoint::Management::v1::Role::ObjectMethods;
-use Data::Dumper::Concise;
 
 no warnings "experimental::signatures";
 
@@ -18,7 +17,6 @@ no warnings "experimental::signatures";
     use strict;
     use warnings;
     use Net::Checkpoint::Management::v1;
-    use Data::Dumper::Concise;
 
     my $cpmgmt = Net::Checkpoint::Management::v1->new(
         server      => 'https://cpmgmt.example.com',
