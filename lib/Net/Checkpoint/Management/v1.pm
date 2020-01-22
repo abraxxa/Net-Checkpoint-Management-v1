@@ -77,11 +77,11 @@ with 'Net::Checkpoint::Management::v1::Role::REST::Client';
 
 sub _error_handler ($self, $data) {
     my $error_message = (
-        exists $data->{errors}
-        && ref $data->{errors} eq 'ARRAY'
-        && exists $data->{errors}->[0]
-        && exists $data->{errors}->[0]->{message})
-        ? $data->{errors}->[0]->{message}
+        exists $data->{'blocking-errors'}
+        && ref $data->{'blocking-errors'} eq 'ARRAY'
+        && exists $data->{'blocking-errors'}->[0]
+        && exists $data->{'blocking-errors'}->[0]->{message})
+        ? $data->{'blocking-errors'}->[0]->{message}
         : $data->{message};
     croak($error_message);
 }

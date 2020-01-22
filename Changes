@@ -2,7 +2,8 @@ Revision history for Net-Checkpoint-Management-v1: {{ $dist->version }}
 
 {{ $NEXT }}
     - fix error handling of responses which contain the error message in a key
-      named 'message' instead of 'error'
+      named 'message' instead of 'errors'
+    - use 'blocking-errors' instead of 'errors' from responses for exceptions
     - fix Data::Dumper::Concise usage without declaring it as a dependency
     - add access_roles methods
 
