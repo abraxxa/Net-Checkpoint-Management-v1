@@ -148,7 +148,6 @@ role {
     });
 
     $mop->method('update_' . $params->{singular} => sub ($self, $object, $object_data) {
-        my $id = $object->{id};
         return $self->_update(join('/',
             '/web_api',
             'v' . $self->api_version,
