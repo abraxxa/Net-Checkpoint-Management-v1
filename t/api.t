@@ -174,6 +174,7 @@ is($access_rule->{uid}, $ipv4_object_rule->{uid},
 is($access_rule->{enabled}, T(), "access rule is enabled");
 ok($access_rule = $cpmgmt->update_accessrule({
         uid     => $access_rule->{uid},
+        name    => $access_rule->{name},
         layer   => $acl_uid,
     }, {
         enabled => JSON->boolean(0),

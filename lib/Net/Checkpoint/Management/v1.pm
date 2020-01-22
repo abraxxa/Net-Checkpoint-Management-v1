@@ -153,10 +153,8 @@ sub _get ($self, $url, $query_params = {}) {
     return $data;
 }
 
-sub _update ($self, $url, $object, $object_data) {
-    my $updated_data = { %$object, %$object_data };
-
-    my $res = $self->post($url, $updated_data);
+sub _update ($self, $url, $object_data) {
+    my $res = $self->post($url, $object_data);
     my $code = $res->code;
     my $data = $res->data;
     $self->_error_handler($data)
@@ -185,6 +183,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-package',
         delete   => 'delete-package',
         list_key => 'packages',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'accessrules',
@@ -195,6 +194,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-access-rule',
         delete   => 'delete-access-rule',
         list_key => 'rulebase',
+        id_keys  => ['uid', 'name', 'rule-number'],
     },
     {
         object   => 'networks',
@@ -205,6 +205,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-network',
         delete   => 'delete-network',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'hosts',
@@ -215,6 +216,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-host',
         delete   => 'delete-host',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'access_roles',
@@ -225,6 +227,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-access-role',
         delete   => 'delete-access-role',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'services_tcp',
@@ -235,6 +238,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-service-tcp',
         delete   => 'delete-service-tcp',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'services_udp',
@@ -245,6 +249,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-service-udp',
         delete   => 'delete-service-udp',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'services_icmp',
@@ -255,6 +260,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-service-icmp',
         delete   => 'delete-service-icmp',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'services_icmpv6',
@@ -265,6 +271,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-service-icmp6',
         delete   => 'delete-service-icmp6',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'services_other',
@@ -275,6 +282,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-service-other',
         delete   => 'delete-service-other',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'service_groups',
@@ -285,6 +293,7 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-service-group',
         delete   => 'delete-service-group',
         list_key => 'objects',
+        id_keys  => [qw( uid name )],
     },
     {
         object   => 'sessions',
