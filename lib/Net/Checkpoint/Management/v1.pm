@@ -154,8 +154,7 @@ sub _get ($self, $url, $query_params = {}) {
 }
 
 sub _update ($self, $url, $object, $object_data) {
-    my $updated_data = clone($object);
-    $updated_data = { %$updated_data, %$object_data };
+    my $updated_data = { %$object, %$object_data };
 
     my $res = $self->post($url, $updated_data);
     my $code = $res->code;
