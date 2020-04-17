@@ -76,13 +76,23 @@ has 'api_version' => (
 with 'Net::Checkpoint::Management::v1::Role::REST::Client';
 
 sub _error_handler ($self, $data) {
-    my $error_message = (
-        exists $data->{'blocking-errors'}
+    my $error_message;
+
+    if (exists $data->{'blocking-errors'}
         && ref $data->{'blocking-errors'} eq 'ARRAY'
         && exists $data->{'blocking-errors'}->[0]
-        && exists $data->{'blocking-errors'}->[0]->{message})
-        ? $data->{'blocking-errors'}->[0]->{message}
-        : $data->{message};
+        && exists $data->{'blocking-errors'}->[0]->{message}) {
+        $error_message = $data->{'blocking-errors'}->[0]->{message}
+    }
+    elsif (exists $data->{'errors'}
+        && ref $data->{'errors'} eq 'ARRAY'
+        && exists $data->{'errors'}->[0]
+        && exists $data->{'errors'}->[0]->{message}) {
+        $error_message = $data->{'errors'}->[0]->{message}
+    }
+    else {
+        $error_message = $data->{message};
+    }
     croak($error_message);
 }
 
