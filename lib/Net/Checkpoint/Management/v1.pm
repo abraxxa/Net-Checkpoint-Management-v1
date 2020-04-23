@@ -313,6 +313,13 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         update   => 'set-session',
         list_key => 'objects',
     },
+    {
+        object   => 'tasks',
+        singular => 'task',
+        list     => 'show-tasks',
+        get      => 'show-task',
+        list_key => 'tasks',
+    },
 ]);
 
 =method login
