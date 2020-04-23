@@ -82,13 +82,23 @@ sub _error_handler ($self, $data) {
         && ref $data->{'blocking-errors'} eq 'ARRAY'
         && exists $data->{'blocking-errors'}->[0]
         && exists $data->{'blocking-errors'}->[0]->{message}) {
-        $error_message = $data->{'blocking-errors'}->[0]->{message}
+        $error_message = $data->{'blocking-errors'}->[0]->{message};
     }
-    elsif (exists $data->{'errors'}
-        && ref $data->{'errors'} eq 'ARRAY'
-        && exists $data->{'errors'}->[0]
-        && exists $data->{'errors'}->[0]->{message}) {
-        $error_message = $data->{'errors'}->[0]->{message}
+    elsif (exists $data->{errors}
+        && ref $data->{errors} eq 'ARRAY'
+        && exists $data->{errors}->[0]
+        && exists $data->{errors}->[0]->{message}) {
+        $error_message = $data->{errors}->[0]->{message};
+    }
+    # when ignore-warnings isn't passed to the API call, a response with only
+    # warnings is also considered an error because its changes aren't saved
+    # when passing ignore-warnings the error handler isn't called because the
+    # http response code is 200
+    elsif (exists $data->{warnings}
+        && ref $data->{warnings} eq 'ARRAY'
+        && exists $data->{warnings}->[0]
+        && exists $data->{warnings}->[0]->{message}) {
+        $error_message = $data->{warnings}->[0]->{message};
     }
     else {
         $error_message = $data->{message};
