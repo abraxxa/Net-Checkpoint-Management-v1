@@ -239,6 +239,17 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         id_keys  => [qw( uid name )],
     },
     {
+        object   => 'groups',
+        singular => 'group',
+        create   => 'add-group',
+        list     => 'show-groups',
+        get      => 'show-group',
+        update   => 'set-group',
+        delete   => 'delete-group',
+        list_key => 'objects',
+        id_keys  => [qw( uid name )],
+    },
+    {
         object   => 'access_roles',
         singular => 'access_role',
         create   => 'add-access-role',
