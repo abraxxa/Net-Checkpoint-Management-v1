@@ -440,6 +440,43 @@ sub verify_policy($self, $policyname) {
     return $data->{'task-id'};
 }
 
+=method install_policy
+
+Installs the policy of the given package onto the given target(s).
+
+Takes a policy name, target(s) and an optional hashref of additional
+parameters.
+The target(s) can be a single name or uid or a list of names or uids.
+
+Returns the task id on success.
+
+=cut
+
+sub install_policy($self, $policyname, $targets, $params) {
+    croak "policy name missing"
+        unless defined $policyname;
+    croak "target(s) missing"
+        unless defined $targets;
+    croak "target(s) must be a single name or uid or a list of names or uids"
+        unless ref $targets eq undef
+            || ref $targets eq 'ARRAY';
+    croak "parameters needs to be a hashref"
+        if defined $params && ref $params ne 'HASH';
+
+    my $res = $self->post('/web_api/v' . $self->api_version .
+        '/install-policy', {
+            $params->%*,
+            'policy-package' => $policyname,
+            targets          => $targets,
+        });
+    my $code = $res->code;
+    my $data = $res->data;
+    $self->_error_handler($data)
+        unless $code == 200;
+
+    return $data->{'task-id'};
+}
+
 =method wait_for_task
 
 Takes a task id and checks its status every second until it isn't
