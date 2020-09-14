@@ -414,6 +414,32 @@ sub discard($self) {
     return $data;
 }
 
+=method verify_policy
+
+Verifies the policy of the given package.
+
+Takes a policy name.
+
+Returns the task id on success.
+
+=cut
+
+sub verify_policy($self, $policyname) {
+    croak "policy name missing"
+        unless defined $policyname;
+
+    my $res = $self->post('/web_api/v' . $self->api_version .
+        '/verify-policy', {
+            'policy-package' => $policyname,
+        });
+    my $code = $res->code;
+    my $data = $res->data;
+    $self->_error_handler($data)
+        unless $code == 200;
+
+    return $data->{'task-id'};
+}
+
 =method wait_for_task
 
 Takes a task id and checks its status every second until it isn't
