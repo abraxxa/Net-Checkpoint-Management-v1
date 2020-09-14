@@ -14,7 +14,7 @@ requires qw( _create _list _get _update _delete );
 
 =head1 SYNOPSIS
 
-    package Net::Cisco::FMC::v1;
+    package Net::Checkpoint::Management::v1;
     use Moo;
     use Net::Checkpoint::Management::v1::Role::ObjectMethods;
 
