@@ -399,7 +399,7 @@ sub publish($self) {
 =method discard
 
 Discards all previously submitted changes.
-Returns a hashref containing the operation status messange and the number of
+Returns a hashref containing the operation status message and the number of
 discarded changes.
 
 =cut
