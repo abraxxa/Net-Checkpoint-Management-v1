@@ -452,7 +452,7 @@ Returns the task id on success.
 
 =cut
 
-sub install_policy($self, $policyname, $targets, $params) {
+sub install_policy($self, $policyname, $targets, $params={}) {
     croak "policy name missing"
         unless defined $policyname;
     croak "target(s) missing"
