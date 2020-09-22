@@ -458,7 +458,7 @@ sub install_policy($self, $policyname, $targets, $params) {
     croak "target(s) missing"
         unless defined $targets;
     croak "target(s) must be a single name or uid or a list of names or uids"
-        unless ref $targets eq undef
+        unless ref $targets eq ''
             || ref $targets eq 'ARRAY';
     croak "parameters needs to be a hashref"
         if defined $params && ref $params ne 'HASH';
