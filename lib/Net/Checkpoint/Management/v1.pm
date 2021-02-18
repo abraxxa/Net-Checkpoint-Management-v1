@@ -78,30 +78,36 @@ with 'Net::Checkpoint::Management::v1::Role::REST::Client';
 sub _error_handler ($self, $data) {
     my $error_message;
 
-    if (exists $data->{'blocking-errors'}
-        && ref $data->{'blocking-errors'} eq 'ARRAY'
-        && exists $data->{'blocking-errors'}->[0]
-        && exists $data->{'blocking-errors'}->[0]->{message}) {
-        $error_message = $data->{'blocking-errors'}->[0]->{message};
+    if (ref $data eq 'HASH' ) {
+        if (exists $data->{'blocking-errors'}
+            && ref $data->{'blocking-errors'} eq 'ARRAY'
+            && exists $data->{'blocking-errors'}->[0]
+            && exists $data->{'blocking-errors'}->[0]->{message}) {
+            $error_message = $data->{'blocking-errors'}->[0]->{message};
+        }
+        elsif (exists $data->{errors}
+            && ref $data->{errors} eq 'ARRAY'
+            && exists $data->{errors}->[0]
+            && exists $data->{errors}->[0]->{message}) {
+            $error_message = $data->{errors}->[0]->{message};
+        }
+        # when ignore-warnings isn't passed to the API call, a response with only
+        # warnings is also considered an error because its changes aren't saved
+        # when passing ignore-warnings the error handler isn't called because the
+        # http response code is 200
+        elsif (exists $data->{warnings}
+            && ref $data->{warnings} eq 'ARRAY'
+            && exists $data->{warnings}->[0]
+            && exists $data->{warnings}->[0]->{message}) {
+            $error_message = $data->{warnings}->[0]->{message};
+        }
+        else {
+            $error_message = $data->{message};
+        }
     }
-    elsif (exists $data->{errors}
-        && ref $data->{errors} eq 'ARRAY'
-        && exists $data->{errors}->[0]
-        && exists $data->{errors}->[0]->{message}) {
-        $error_message = $data->{errors}->[0]->{message};
-    }
-    # when ignore-warnings isn't passed to the API call, a response with only
-    # warnings is also considered an error because its changes aren't saved
-    # when passing ignore-warnings the error handler isn't called because the
-    # http response code is 200
-    elsif (exists $data->{warnings}
-        && ref $data->{warnings} eq 'ARRAY'
-        && exists $data->{warnings}->[0]
-        && exists $data->{warnings}->[0]->{message}) {
-        $error_message = $data->{warnings}->[0]->{message};
-    }
+    # underlying exception like Could not connect to 'cpmanager.example.org'
     else {
-        $error_message = $data->{message};
+        $error_message = $data;
     }
     croak($error_message);
 }
