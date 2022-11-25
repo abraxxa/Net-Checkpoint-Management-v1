@@ -96,6 +96,15 @@ ok(my $acme_net_clients = $cpmgmt->create_network({
     'ignore-warnings' => 1,
 }), "create network 'acme_net-clients' successful");
 
+ok(my $dns_domains = $cpmgmt->list_dns_domains(),
+    'list DNS domains successful');
+
+ok(my $dns_domain = $cpmgmt->create_dns_domain({
+    name                => '.www.example.org',
+    'is-sub-domain'     => 0,
+    'ignore-warnings'   => 1,
+}), "create DNS domain 'www.example.org' successful");
+
 ok(my $tcp_services = $cpmgmt->list_services_tcp(),
     'list TCP services successful');
 

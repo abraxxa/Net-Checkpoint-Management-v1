@@ -245,6 +245,17 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         id_keys  => [qw( uid name )],
     },
     {
+        object   => 'dns_domains',
+        singular => 'dns_domain',
+        create   => 'add-dns-domain',
+        list     => 'show-dns-domains',
+        get      => 'show-dns-domain',
+        update   => 'set-dns-domain',
+        delete   => 'delete-dns-domain',
+        list_key => 'objects',
+        id_keys  => [qw( uid name )],
+    },
+    {
         object   => 'groups',
         singular => 'group',
         create   => 'add-group',
