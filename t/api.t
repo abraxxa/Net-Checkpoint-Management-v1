@@ -189,6 +189,20 @@ ok(dies {
     $cpmgmt->find_service_other({ 'ip-protocol' => 0 })
 }, "find other service IP protocol 0 fails");
 
+ok(my $service_groups = $cpmgmt->list_service_groups(),
+    'list service groups successful');
+
+ok(my $acme_service_group_test = $cpmgmt->create_service_group({
+    name                    => 'acme_svcgrp-test',
+    members                 => [
+        'tcp_53',
+        'udp_53',
+        'icmp_echo-request',
+        'gre',
+    ],
+    'ignore-warnings'       => 1,
+}), "create service group 'acme_svcgrp-test' successful");
+
 ok(my $ipv4_object_rule = $cpmgmt->create_accessrule({
     layer       => $acl_uid,
     position    => 'top', # to not create it after the cleanup rule
