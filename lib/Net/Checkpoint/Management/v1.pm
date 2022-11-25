@@ -245,6 +245,17 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
         id_keys  => [qw( uid name )],
     },
     {
+        object   => 'address_ranges',
+        singular => 'address_range',
+        create   => 'add-address-range',
+        list     => 'show-address-ranges',
+        get      => 'show-address-range',
+        update   => 'set-address-range',
+        delete   => 'delete-address-range',
+        list_key => 'objects',
+        id_keys  => [qw( uid name )],
+    },
+    {
         object   => 'dns_domains',
         singular => 'dns_domain',
         create   => 'add-dns-domain',

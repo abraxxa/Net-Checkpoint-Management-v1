@@ -105,6 +105,16 @@ ok(my $dns_domain = $cpmgmt->create_dns_domain({
     'ignore-warnings'   => 1,
 }), "create DNS domain 'www.example.org' successful");
 
+ok(my $address_ranges = $cpmgmt->list_address_ranges(),
+    'list address ranges successful');
+
+ok(my $acme_range_test = $cpmgmt->create_address_range({
+    name                    => 'acme_range-test',
+    'ipv4-address-first'    => '192.0.2.10',
+    'ipv4-address-last'     => '192.0.2.20',
+    'ignore-warnings'       => 1,
+}), "create address range 'acme_range-test' successful");
+
 ok(my $tcp_services = $cpmgmt->list_services_tcp(),
     'list TCP services successful');
 
