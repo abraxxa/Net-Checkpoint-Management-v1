@@ -115,6 +115,20 @@ ok(my $acme_range_test = $cpmgmt->create_address_range({
     'ignore-warnings'       => 1,
 }), "create address range 'acme_range-test' successful");
 
+ok(my $groups = $cpmgmt->list_groups(),
+    'list groups successful');
+
+ok(my $acme_group_test = $cpmgmt->create_group({
+    name                    => 'acme_grp-test',
+    members                 => [
+        'acme_host-dns1',
+        'acme_net-clients',
+        '.www.example.org',
+        'acme_range-test',
+    ],
+    'ignore-warnings'       => 1,
+}), "create group 'acme_grp-test' successful");
+
 ok(my $tcp_services = $cpmgmt->list_services_tcp(),
     'list TCP services successful');
 
