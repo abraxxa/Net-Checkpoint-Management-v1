@@ -8,6 +8,7 @@ use feature 'signatures';
 use Types::Standard qw( ArrayRef Str );
 use Carp::Clan qw(^Net::Checkpoint::Management::v1);
 use Clone qw( clone );
+use List::Util qw( first );
 use Net::Checkpoint::Management::v1::Role::ObjectMethods;
 
 no warnings "experimental::signatures";
@@ -528,6 +529,36 @@ sub wait_for_task($self, $taskid, $callback) {
         sleep 1;
     }
     return $task;
+}
+
+=method where_used
+
+Takes a Checkpoint object in form of a hashref as returned by the various APIs
+and optional query parameters.
+
+Prefers the object uid over its name for the query.
+
+Returns the unmodified response on success.
+
+=cut
+
+sub where_used ($self, $object, $query_params = {}) {
+    croak "object must be a hashref"
+        unless ref $object eq 'HASH';
+    croak "object needs a name or uid attribute"
+        unless exists $object->{name} || exists $object->{uid};
+
+    my $res = $self->post('/web_api/v' . $self->api_version .
+        '/where-used', {
+            (map { $_ => $object->{$_} } first { exists $object->{$_} } (qw( uid name ))),
+            %$query_params,
+        });
+    my $code = $res->code;
+    my $data = $res->data;
+    $self->_error_handler($data)
+        unless $code == 200;
+
+    return $data;
 }
 
 1;
