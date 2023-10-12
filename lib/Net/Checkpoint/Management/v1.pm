@@ -31,7 +31,7 @@ no warnings "experimental::signatures";
 =head1 DESCRIPTION
 
 This module is a client library for the Checkpoint Management API version 1.x.
-Currently it is developed and tested against version R80.40.
+Currently it is developed and tested against version R81.10.
 
 =cut
 
