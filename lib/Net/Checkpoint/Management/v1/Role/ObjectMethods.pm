@@ -17,9 +17,9 @@ requires qw( _create _list _get _update _delete );
     package Net::Checkpoint::Management::v1;
     use Moo;
     use Net::Checkpoint::Management::v1::Role::ObjectMethods;
+    use MooX::Role::Parameterized::With;
 
-    Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
-        {
+    with "Net::Checkpoint::Management::v1::Role::ObjectMethods" => {
             object   => 'packages',
             singular => 'package',
             create   => 'add-package',
@@ -30,7 +30,7 @@ requires qw( _create _list _get _update _delete );
             list_key => 'packages',
             id_keys  => [qw( uid name )],
         },
-        {
+        "Net::Checkpoint::Management::v1::Role::ObjectMethods" => {
             object   => 'accessrules',
             singular => 'accessrule',
             create   => 'add-access-rule',
@@ -40,8 +40,7 @@ requires qw( _create _list _get _update _delete );
             delete   => 'delete-access-rule',
             list_key => 'rulebase',
             id_keys  => ['uid', 'name', 'rule-number'],
-        },
-    ]);
+        };
 
     1;
 
