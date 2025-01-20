@@ -43,12 +43,23 @@ no warnings "experimental::signatures";
 This module is a client library for the Checkpoint Management API version 1.x.
 Currently it is developed and tested against version R81.20.
 
+=attr user
+
+Sets the username used by the L</login> method.
+
 =cut
 
 has 'user' => (
     isa => Str,
     is  => 'rw',
 );
+
+=attr passwd
+
+Sets the password used by the L</login> method.
+
+=cut
+
 has 'passwd' => (
     isa => Str,
     is  => 'rw',
