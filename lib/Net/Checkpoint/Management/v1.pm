@@ -28,6 +28,16 @@ no warnings "experimental::signatures";
 
     $cpmgmt->login;
 
+    # OR
+
+    $cpmgmt = Net::Checkpoint::Management::v1->new(
+        server      => 'https://cpmgmt.example.com',
+        api_key     => '$api-key',
+        clientattrs => { timeout => 30 },
+    );
+
+    $cpmgmt->login;
+
 =head1 DESCRIPTION
 
 This module is a client library for the Checkpoint Management API version 1.x.
@@ -42,6 +52,18 @@ has 'user' => (
 has 'passwd' => (
     isa => Str,
     is  => 'rw',
+);
+
+=attr api_key
+
+Sets the API key used by the L</login> method.
+
+=cut
+
+has 'api_key' => (
+    isa         => Str,
+    is          => 'ro',
+    predicate   => '_has_api_key',
 );
 
 =attr api_versions
@@ -376,13 +398,28 @@ Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
 
 Logs into the Checkpoint Manager API using version 1.
 
+If both the L</api_key>, L</user> and L</passwd> are set, the L</api_key> is used.
+
 =cut
 
 sub login($self) {
-    my $res = $self->post('/web_api/v1/login', {
-        user     => $self->user,
-        password => $self->passwd,
-    });
+    my %login_params;
+
+    if ($self->_has_api_key) {
+        %login_params = (
+            %login_params,
+            'api-key' => $self->api_key,
+        );
+    }
+    else {
+        %login_params = (
+            %login_params,
+            user     => $self->user,
+            password => $self->passwd,
+        );
+    }
+
+    my $res = $self->post('/web_api/v1/login', \%login_params);
     if ($res->code == 200) {
         my $api_version = $res->data->{'api-server-version'};
         $self->api_version($api_version);
