@@ -43,6 +43,11 @@ no warnings "experimental::signatures";
 This module is a client library for the Checkpoint Management API version 1.x.
 Currently it is developed and tested against version R81.20.
 
+=head1 ATTRIBUTES
+
+This module is using L<Role::REST::Client> under the hood and all its
+L<attributes|Role::REST::Client/ATTRIBUTES> can be set too.
+
 =attr user
 
 Sets the username used by the L</login> method.
