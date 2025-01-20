@@ -51,7 +51,7 @@ Sets the username used by the L</login> method.
 
 has 'user' => (
     isa => Str,
-    is  => 'rw',
+    is  => 'ro',
 );
 
 =attr passwd
@@ -62,7 +62,7 @@ Sets the password used by the L</login> method.
 
 has 'passwd' => (
     isa => Str,
-    is  => 'rw',
+    is  => 'ro',
 );
 
 =attr api_key
