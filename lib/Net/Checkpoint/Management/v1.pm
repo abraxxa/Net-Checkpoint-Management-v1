@@ -411,10 +411,15 @@ Logs into the Checkpoint Manager API using version 1.
 
 If both the L</api_key>, L</user> and L</passwd> are set, the L</api_key> is used.
 
+Takes an optional hashref of login parameters like read-only or domain.
+
 =cut
 
-sub login($self) {
+sub login($self, $params = undef) {
     my %login_params;
+
+    %login_params = (%login_params, $params->%*)
+        if $params;
 
     if ($self->_has_api_key) {
         %login_params = (
