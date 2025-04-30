@@ -238,7 +238,7 @@ sub _delete ($self, $url, $object) {
     return 1;
 }
 
-Net::Checkpoint::Management::v1::Role::ObjectMethods->apply([
+Net::Checkpoint::Management::v1::Role::ObjectMethods->apply_roles_to_target([
     {
         object   => 'packages',
         singular => 'package',
