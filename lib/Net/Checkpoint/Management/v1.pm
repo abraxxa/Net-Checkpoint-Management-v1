@@ -423,7 +423,7 @@ Takes an optional hashref of login parameters like read-only or domain.
 sub login($self, $params = undef) {
     my %login_params;
 
-    %login_params = (%login_params, $params->%*)
+    %login_params = ($params->%*)
         if $params;
 
     if ($self->_has_api_key) {
