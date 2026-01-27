@@ -246,6 +246,10 @@ Creates a package, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"c
 
 Lists packages, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_package
+
+Finds a package, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_package
 
 Gets a package, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -265,6 +269,10 @@ Creates an accessrule, see L<Net::Checkpoint::Management::v1::Role::ObjectMethod
 =method list_accessrules
 
 Lists accessrules, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
+
+=method find_accessrule
+
+Finds an accessrule, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
 
 =method get_accessrule
 
@@ -286,6 +294,10 @@ Creates a network, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"c
 
 Lists networks, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_network
+
+Finds a network, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_network
 
 Gets a network, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -305,6 +317,10 @@ Creates a host, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"crea
 =method list_hosts
 
 Lists hosts, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
+
+=method find_host
+
+Finds a host, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
 
 =method get_host
 
@@ -326,6 +342,10 @@ Creates an address_range, see L<Net::Checkpoint::Management::v1::Role::ObjectMet
 
 Lists address_ranges, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_address_range
+
+Finds an address_range, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_address_range
 
 Gets an address_range, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -345,6 +365,10 @@ Creates a dns_domain, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods
 =method list_dns_domains
 
 Lists dns_domains, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
+
+=method find_dns_domain
+
+Finds a dns_domain, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
 
 =method get_dns_domain
 
@@ -366,6 +390,10 @@ Creates a group, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"cre
 
 Lists groups, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_group
+
+Finds a group, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_group
 
 Gets a group, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -385,6 +413,10 @@ Creates an access_role, see L<Net::Checkpoint::Management::v1::Role::ObjectMetho
 =method list_access_roles
 
 Lists access_roles, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
+
+=method find_access_role
+
+Finds an access_role, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
 
 =method get_access_role
 
@@ -406,6 +438,10 @@ Creates a service_tcp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethod
 
 Lists services_tcp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_service_tcp
+
+Finds a service_tcp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_service_tcp
 
 Gets a service_tcp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -425,6 +461,10 @@ Creates a service_udp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethod
 =method list_services_udp
 
 Lists services_udp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
+
+=method find_service_udp
+
+Finds a service_udp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
 
 =method get_service_udp
 
@@ -446,6 +486,10 @@ Creates a service_icmp, see L<Net::Checkpoint::Management::v1::Role::ObjectMetho
 
 Lists services_icmp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_service_icmp
+
+Finds a service_icmp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_service_icmp
 
 Gets a service_icmp, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -465,6 +509,10 @@ Creates a service_icmpv6, see L<Net::Checkpoint::Management::v1::Role::ObjectMet
 =method list_services_icmpv6
 
 Lists services_icmpv6, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
+
+=method find_service_icmpv6
+
+Finds a service_icmpv6, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
 
 =method get_service_icmpv6
 
@@ -486,6 +534,10 @@ Creates a service_other, see L<Net::Checkpoint::Management::v1::Role::ObjectMeth
 
 Lists services_other, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_service_other
+
+Finds a service_other, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_service_other
 
 Gets a service_other, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -506,6 +558,10 @@ Creates a service_group, see L<Net::Checkpoint::Management::v1::Role::ObjectMeth
 
 Lists service_groups, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_service_group
+
+Finds a service_group, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_service_group
 
 Gets a service_group, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -522,6 +578,10 @@ Deletes a service_group, see L<Net::Checkpoint::Management::v1::Role::ObjectMeth
 
 Lists sessions, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
 
+=method find_session
+
+Finds a session, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
+
 =method get_session
 
 Gets a session, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"get_$singular">
@@ -533,6 +593,10 @@ Updates a session, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"u
 =method list_tasks
 
 Lists tasks, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"list_$object">
+
+=method find_task
+
+Finds a task, see L<Net::Checkpoint::Management::v1::Role::ObjectMethods/"find_$singular">
 
 =method get_task
 
