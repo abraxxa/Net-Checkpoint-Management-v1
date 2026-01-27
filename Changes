@@ -1,6 +1,8 @@
 Revision history for Net-Checkpoint-Management-v1: {{ $dist->version }}
 
 {{ $NEXT }}
+
+0.004002  2026-01-27 13:19:45+01:00 Europe/Vienna
     - fix documentation of methodnames added in previous version
     - add documentation for find_ methods
 
