@@ -939,7 +939,7 @@ task as argument.
 
 =cut
 
-sub wait_for_task($self, $taskid, $callback) {
+sub wait_for_task($self, $taskid, $callback = undef) {
     croak "task-id missing"
         unless defined $taskid;
     croak "callback must be a coderef"
